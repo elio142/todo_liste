@@ -1,0 +1,134 @@
+
+body {
+    font-family: sans-serif;
+    background: linear-gradient(to right, #677ce7, #724da4);
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+.title {
+    color: #2980b9;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.title::before {
+    content: "";
+    width: 16px;
+    height: 8px;
+    border-left: 4px solid #2980b9;
+    border-bottom: 4px solid #2980b9;
+    transform: rotate(-45deg);
+}
+.subtitle{
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 1.5rem;
+    margin-top: 0.2rem;
+}
+.container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+.task-controls{
+    
+}
+
+.input-container {
+    border-radius: 5px;
+    margin: 3rem 0.5rem 2rem 0.5rem;
+}
+.icon{
+    position:absolute;
+    transform: translateY(35%);
+    margin-left: 0.5rem;
+}
+.search-input {
+    padding-left: 2rem ;
+    height: 30px;
+    border-radius: 7px;
+    outline:none;
+    border: solid 1.5px gainsboro;
+}
+
+.search-input:focus,
+.search-input:hover{
+    border-color:#00429f58;
+    box-shadow: 0 0 3px #00429f58 ;
+    transition: box-shadow 0.2s,
+    border-color 0.2s;
+}
+
+.search-input:not(:focus){
+    transition: box-shadow 0.5s ease-out,
+    border-color 0.7s ease-out;
+}
+
+.filter-tasks {
+    padding: 8px;
+    border-radius: 7px;
+    margin-right: 0.5rem;
+    border: 1.5px solid gainsboro;
+}
+.clear-btn {
+    padding: 8px 1rem;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 7px;
+}
+
+.add-container {
+    display: flex;
+    margin-left: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.new-task {
+    flex: 1;
+    padding: 10px;
+    margin-right: 0.5rem;
+    border: 1.5px solid gainsboro;
+    border-radius: 7px;
+    outline: none;
+}
+
+.add-task {
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+.empty-tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(200, 200, 200, 0.2); 
+    border-radius: 10px;
+    padding: 10%;
+    margin: 1.5rem 0.5rem;
+}
+
+.empty-icon {
+    font-size: 2rem;
+}
+
+.empty-text {
+    font-size: 12px;
+    color: #666;
+}
+

@@ -11,13 +11,28 @@ function selectOption(value){
 //section Add-Container --- What needs to be done ? ---
         document.getElementById("add-task").addEventListener('click' , function(){
 
-        let newTaskValue = document.getElementById("new-task").value;
-        
-        let newListItem = document.createElement("li");
+            let newTaskValue = document.getElementById("new-task").value.trim();
 
-        newListItem.textContent = newTaskValue;
-    
-        document.getElementById("task-list").appendChild(newListItem);
-    
-        document.getElementById("new-task").value = "";
+            if(newTaskValue !== ""){
+
+                let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+                tasks.push("newTaskValue");
+
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+
+                let newList = document.createElement("li");
+
+                newList.textContent = newTaskValue;
+
+                document.getElementById("task-list").appendChild(newListItem);
+
+                document.getElementById("new-task").value = ""; 
+
+
+
+            }
+
+        
     });
+ 

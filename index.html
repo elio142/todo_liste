@@ -1,22 +1,50 @@
-<div class="container">
-        
-    <div class="task-controls">
-        <div class="input-container">
-            <span class="icon">🔍</span>
-            <input type="text" placeholder="Search tasks..." class="search-input">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Master</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Task Master</h1>
+        <p class="subtitle">Organize your tasks efficiently</p>
+
+        <div class="task-controls">
+            <span class="input-container">
+                <span class="icon">🔍</span>
+                <input type="text" placeholder="Search tasks..." class="search-input">
+            </span>
+            <select class="filter-tasks" id="status-select">
+                <option value="all">🗓 All Tasks</option>
+                <option value="active">✅ Active</option>
+                <option value="completed">⌛ Completed</option>
+            </select>
+            <button class="clear-btn">🗑 Clear All</button>
         </div>
-        <select class="filter-tasks">
-            <option value="all">🗓 All Tasks</option>
-            <option value="active">✅ Active</option>
-            <option value="completed">⌛ Completed</option>
-        </select>
-        <button class="clear-btn">🗑 Clear All</button>
-    </div>
 
-    <div class="add-container">
-        <input type="text" class="new-task" placeholder="What needs to be done?">
-        <button class="add-task">Add Task</button>
-    </div>
-</div>
+        <div class="add-container">
+            <input type="text" class="new-task" placeholder="What needs to be done?" id="new-task">
+            <button class="add-task" id="add-task">Add Task</button>
+        </div>
 
+        <section class="task-list-section">
+           
+            <div class="empty-tasks">
+                <span class="empty-icon">📝</span>
+                <p class="empty-text">No tasks found. Add some tasks to get started!</p>
+        </div>
+        </section>
+
+        <section class="task-filter-section">
+            <div class="btn">
+                <button class="filter-btn" onclick="selectOption('all')">All</button>
+                <button class="filter-btn" onclick="selectOption('active')">Active</button>
+                <button class="filter-btn" onclick="selectOption('completed')">Completed</button>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
 </body>
+</html>
