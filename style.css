@@ -1,6 +1,6 @@
 body {
   font-family: sans-serif;
-  background: linear-gradient(to right, #677ce7, #724da4);
+  background: linear-gradient(135deg, #677ce7, #724da4);
   align-items: center;
   height: 100vh;
   margin: 0;
@@ -57,6 +57,7 @@ body {
   border-radius: 7px;
   outline: none;
   border: solid 1.5px gainsboro;
+  
 }
 
 .search-input:focus,
@@ -93,7 +94,7 @@ body {
   transition: all 0.3s ease-out;
   box-shadow: none;
   transform: scale(1);
- }
+}
 
 .clear-btn {
   padding: 8px 1rem;
@@ -103,10 +104,10 @@ body {
   border-radius: 7px;
 }
 .clear-btn:hover {
-    background-color: #ff4747; /* Lighter red on hover */
-    transform: scale(1.05); /* Slightly increase the button size for effect */
-    cursor: pointer; /* Shows a pointer cursor when hovering */
-    transition: background-color 0.3s, transform 0.2s ease; /* Smooth transition */
+  background-color: #ff4747; /* Lighter red on hover */
+  transform: scale(1.05); /* Slightly increase the button size for effect */
+  cursor: pointer; /* Shows a pointer cursor when hovering */
+  transition: background-color 0.3s, transform 0.2s ease; /* Smooth transition */
 }
 .add-container {
   display: flex;
@@ -123,7 +124,7 @@ body {
 }
 .add-task {
   padding: 10px;
-  background: #28a745;
+  background: lightgreen;
   color: white;
   border: none;
   border-radius: 5px;
@@ -131,10 +132,9 @@ body {
   margin-left: 5px;
 }
 .add-task:hover {
-    background-color: #218838; /* Darker green on hover */
-    transform: scale(1.05); /* Slightly increase the button size for effect */
-    cursor: pointer; /* Shows a pointer cursor when hovering */
-    transition: background-color 0.3s, transform 0.2s ease; /* Smooth transition */
+  transform: scale(1.05); /* Slightly increase the button size for effect */
+  cursor: pointer; /* Shows a pointer cursor when hovering */
+  transition: background-color 0.3s, transform 0.2s ease; /* Smooth transition */
 }
 .empty-tasks {
   display: flex;
@@ -157,27 +157,26 @@ body {
 }
 /* Styling for filter buttons */
 .btn {
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-    margin-top: 1rem;
-  }
-  
-  .filter-btn {
-    background: none;
-    border: none;
-    color: #333;
-    padding: 6px 12px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .filter-btn.active {
-    background: #2980b9;
-    color: white;
-    border-radius: 5px;
-  }
-  
-  
-  
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  color: #333;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:focus {
+  background: #2980b9;
+  color: white;
+  border-radius: 5px;
+  border: blue 2px solid;
+  transition: background-color 1s ease-out border-color 0.1s ease-out;
+}
