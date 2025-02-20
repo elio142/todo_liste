@@ -8,10 +8,22 @@
   </head>
   <body>
     <div class="container">
-        <section class="header">
-            <h1><span class="icon">&#10003;</span> Task Master</h1>
-            <p>Organize your tasks efficiently</p>
-        </section>
+      <section class="header">
+        <h1><span class="header-icon">&#10003;</span> Task Master</h1>
+        <p>Organize your tasks efficiently</p>
+      </section>
+      <section class="task-controls">
+        <span class="input-container">
+          <span class="icon">🔍</span>
+          <input type="text" placeholder="Search tasks..." class="search-input"/>
+        </span>
+        <select class="filter-tasks" id="status-select">
+          <option value="all">🗓 All Tasks</option>
+          <option value="active">✅ Active</option>
+          <option value="completed">⌛ Completed</option>
+        </select>
+        <button class="clear-btn">🗑 Clear All</button>
+      </section>
     </div>
 
     <script src="script.js"></script>

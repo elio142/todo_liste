@@ -5,29 +5,88 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg,#724da4, #677ce7);
+    background: linear-gradient(135deg, #724da4, #677ce7);
 }
+
+.header {
+    text-align: center;
+}
+
 .header h1 {
-    color: rgb(85, 133, 255); /* Lighter shade of blue */
+    color: rgb(85, 133, 255);
     font-size: 40px;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers the title */
+    gap: 10px; /* Space between icon and text */
+    font-weight: bold;
 }
-.header p{
-    margin-top:7px;
-    color:gray;
+
+.header-icon {
+    font-size: 35px;
+    color: rgb(85, 133, 255);
 }
-   
-.header .icon {
-    
-    color: rgb(85, 133, 255); /* Same color as the title */
-}   
+
+/* Fixing the issue with .icon */
+.input-container .icon {
+    position: absolute;
+    transform: translateY(35%);
+    margin-left: 0.5rem;
+}
+
+.header p {
+    margin-top: 7px;
+    color: gray;
+}
 
 .container {
     width: 90%;
     max-width: 500px;
     background: white;
-    padding: 20px;
-    border-radius: 15px;
+    padding: 10px;
+    border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
+
+.search-input {
+    padding-left: 2rem ;
+    height: 30px;
+    border-radius: 7px;
+    outline: none;
+    border: solid 1.5px gainsboro;
+}
+
+.search-input:focus,
+.search-input:hover{
+    border-color:#00429f58;
+    box-shadow: 0 0 3px #00429f58 ;
+    transition: box-shadow 0.2s,
+    border-color 0.2s;
+}
+.search-input:not(:focus){
+    transition: box-shadow 0.5s ease-out,
+    border-color 0.7s ease-out;
+}
+.filter-tasks {
+    padding: 8px;
+    border-radius: 7px;
+    margin-right: 0.5rem;
+    border: 1.5px solid gainsboro;
+}
+.clear-btn {
+    padding: 8px 1rem;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    transition: background 0.3s ease;
+}
+
+.clear-btn:hover {
+    background: rgb(255, 100, 100); /* Lighter red on hover */
+    cursor: pointer;
+}
+
+
