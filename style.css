@@ -63,17 +63,18 @@ body {
     border: solid 1.5px gainsboro;
 }
 
-.search-input:focus,
-.search-input:hover{
-    border-color:#00429f58;
-    box-shadow: 0 0 3px #00429f58 ;
-    transition: box-shadow 0.2s,
-    border-color 0.2s;
-}
+/* When input loses focus */
+.search-input:not(:focus),
+.new-task:not(:focus) {
+  transition: all 0.3s ease-out;
+  box-shadow: none;
+}  
 
-.search-input:not(:focus){
-    transition: box-shadow 0.5s ease-out,
-    border-color 0.7s ease-out;
+
+.search-input:focus,
+.new-task:focus{
+  border-color: #2980b9;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
 }
 
 .filter-tasks {
@@ -107,7 +108,7 @@ body {
 
 .add-task {
     padding: 10px;
-    background: #28a745;
+    background: #90ee90;
     color: white;
     border: none;
     border-radius: 5px;
