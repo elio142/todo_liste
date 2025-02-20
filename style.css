@@ -1,92 +1,157 @@
 body {
-    font-family: Arial, sans-serif;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #724da4, #677ce7);
+  font-family: sans-serif;
+  background: linear-gradient(to right, #677ce7, #724da4);
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
-
-.header {
-    text-align: center;
+.title {
+  color: #2980b9;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
-
-.header h1 {
-    color: rgb(85, 133, 255);
-    font-size: 40px;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centers the title */
-    gap: 10px; /* Space between icon and text */
-    font-weight: bold;
+.title::before {
+  content: "";
+  width: 16px;
+  height: 8px;
+  border-left: 4px solid #2980b9;
+  border-bottom: 4px solid #2980b9;
+  transform: rotate(-45deg);
 }
-
-.header-icon {
-    font-size: 35px;
-    color: rgb(85, 133, 255);
+.subtitle {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 1.5rem;
+  margin-top: 0.2rem;
 }
-
-/* Fixing the issue with .icon */
-.input-container .icon {
-    position: absolute;
-    transform: translateY(35%);
-    margin-left: 0.5rem;
-}
-
-.header p {
-    margin-top: 7px;
-    color: gray;
-}
-
 .container {
-    width: 90%;
-    max-width: 500px;
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
 }
-
+.input-container {
+  border-radius: 5px;
+  margin: 3rem 0.5rem 2rem 0.5rem;
+}
+.icon {
+  position: absolute;
+  transform: translateY(35%);
+  margin-left: 0.5rem;
+}
 .search-input {
-    padding-left: 2rem ;
-    height: 30px;
-    border-radius: 7px;
-    outline: none;
-    border: solid 1.5px gainsboro;
+  padding-left: 2rem;
+  height: 30px;
+  border-radius: 7px;
+  outline: none;
+  border: solid 1.5px gainsboro;
 }
 
 .search-input:focus,
-.search-input:hover{
-    border-color:#00429f58;
-    box-shadow: 0 0 3px #00429f58 ;
-    transition: box-shadow 0.2s,
-    border-color 0.2s;
+.new-task:focus {
+  border-color: #2980b9;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
+  transform: scale(1.02); /* Slight zoom effect */
 }
-.search-input:not(:focus){
-    transition: box-shadow 0.5s ease-out,
-    border-color 0.7s ease-out;
+
+/* When input loses focus */
+.search-input:not(:focus),
+.new-task:not(:focus) {
+  transition: all 0.3s ease-out;
+  box-shadow: none;
+  transform: scale(1);
 }
+
 .filter-tasks {
-    padding: 8px;
-    border-radius: 7px;
-    margin-right: 0.5rem;
-    border: 1.5px solid gainsboro;
+  padding: 8px;
+  border-radius: 7px;
+  margin-right: 0.5rem;
+  border: 1.5px solid gainsboro;
+  transition: all 0.3s ease-in-out; /* Smooth transition effect */
+  cursor: pointer;
 }
+/* When select is focused */
+.filter-tasks:focus {
+  border-color: #2980b9;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
+  transform: scale(1.02); /* Slight zoom effect */
+}
+/* When select loses focus */
+.filter-tasks:not(:focus) {
+  transition: all 0.3s ease-out;
+  box-shadow: none;
+  transform: scale(1);
+ }
+
 .clear-btn {
-    padding: 8px 1rem;
-    background: red;
-    color: white;
-    border: none;
-    border-radius: 7px;
-    transition: background 0.3s ease;
+  padding: 8px 1rem;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 7px;
 }
-
 .clear-btn:hover {
-    background: rgb(255, 100, 100); /* Lighter red on hover */
-    cursor: pointer;
+    background-color: #ff4747; /* Lighter red on hover */
+    transform: scale(1.05); /* Slightly increase the button size for effect */
+    cursor: pointer; /* Shows a pointer cursor when hovering */
+    transition: background-color 0.3s, transform 0.2s ease; /* Smooth transition */
+}
+.add-container {
+  display: flex;
+  margin-left: 0.5rem;
+  margin-top: 1.5rem;
+}
+.new-task {
+  flex: 1;
+  padding: 10px;
+  margin-right: 0.5rem;
+  border: 1.5px solid gainsboro;
+  border-radius: 7px;
+  outline: none;
+}
+.add-task {
+  padding: 10px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.add-task:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly increase the button size for effect */
+    cursor: pointer; /* Shows a pointer cursor when hovering */
+    transition: background-color 0.3s, transform 0.2s ease; /* Smooth transition */
+}
+.empty-tasks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(200, 200, 200, 0.2);
+  border-radius: 10px;
+  padding: 10%;
+  margin: 1.5rem 0.5rem;
 }
 
+.empty-icon {
+  font-size: 2rem;
+}
 
+.empty-text {
+  font-size: 12px;
+  color: #666;
+}

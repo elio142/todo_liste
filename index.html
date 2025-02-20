@@ -3,16 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>todo liste</title>
+    <title>Task Master</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
-      <section class="header">
-        <h1><span class="header-icon">&#10003;</span> Task Master</h1>
-        <p>Organize your tasks efficiently</p>
-      </section>
-      <section class="task-controls">
+      <h1 class="title">Task Master</h1>
+      <p class="subtitle">Organize your tasks efficiently</p>
+
+      <div class="task-controls">
         <span class="input-container">
           <span class="icon">🔍</span>
           <input type="text" placeholder="Search tasks..." class="search-input"/>
@@ -23,6 +22,30 @@
           <option value="completed">⌛ Completed</option>
         </select>
         <button class="clear-btn">🗑 Clear All</button>
+      </div>
+
+      <div class="add-container">
+        <input
+          type="text"
+          class="new-task"
+          placeholder="What needs to be done?"
+          id="new-task"
+        />
+        <button class="add-task" id="add-task">Add Task</button>
+      </div>
+
+      <section class="task-list-section">
+        <ul class="task-list" id="task-list"></ul>
+        <div class="empty-tasks">
+          <span class="empty-icon">📝</span>
+          <p class="empty-text">
+            No tasks found. Add some tasks to get started!
+          </p>
+        </div>
+      </section>
+
+      
+        </div>
       </section>
     </div>
 
