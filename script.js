@@ -164,3 +164,20 @@ function clearAllTasks() {
     // Optionally, display the empty message again
     toggleEmptyMessage();
 }
+// search function 
+function toggleEmptyMessage() {
+    let tasks = getTasksFromLocalStorage();
+    let emptyMessage = document.getElementById("empty-message");
+    emptyMessage.style.display = tasks.length === 0 ? "block" : "none";
+}
+document.querySelector(".search-input").addEventListener("input", searchTasks);
+
+function searchTasks() {
+    let searchValue = document.querySelector(".search-input").value.toLowerCase();
+    let tasks = document.querySelectorAll("#task-list li");
+
+    tasks.forEach(task => {
+        let taskText = task.textContent.toLowerCase();
+        task.style.display = taskText.includes(searchValue) ? "flex" : "none";
+    });
+}
