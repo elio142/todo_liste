@@ -69,7 +69,7 @@ body {
   box-shadow: none;
 }
 
-#task-select:focus, .search-input:focus,
+.filter-tasks:focus ,.search-input:focus,
 #new-task:focus {
   border-color: #2980b9;
   box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
@@ -123,6 +123,9 @@ body {
 }
 .empty-tasks {
   display: flex;
+  flex-direction: column; /* Stack children (icon + text) on top of each other */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
   background: rgba(200, 200, 200, 0.2);
   border-radius: 10px;
   margin: 1rem;
