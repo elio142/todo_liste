@@ -151,3 +151,16 @@ function createIconButton(icon, id, className, color, onClick, hidden = false) {
     if (hidden) button.style.display = "none";
     return button;
 }
+// function to clear all the tasks 
+document.getElementById("clear-btn").addEventListener("click", clearAllTasks);
+
+function clearAllTasks() {
+    // Clear tasks from local storage
+    localStorage.removeItem("tasks");
+    
+    // Clear tasks from the task list in the UI
+    document.getElementById("task-list").innerHTML = "";
+    
+    // Optionally, display the empty message again
+    toggleEmptyMessage();
+}
