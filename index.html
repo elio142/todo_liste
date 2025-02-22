@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task Master</title>
     <link rel="stylesheet" href="style.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
   </head>
   <body>
     <div class="container">
@@ -14,14 +16,18 @@
       <div class="task-controls">
         <span class="input-container">
           <span class="icon">🔍</span>
-          <input type="text" placeholder=" Search tasks..." class="search-input"/>
+          <input
+            type="text"
+            placeholder="Search tasks..."
+            class="search-input"
+          />
         </span>
         <select class="filter-tasks" id="status-select">
           <option value="all">🗓 All Tasks</option>
           <option value="active">✅ Active</option>
           <option value="completed">⌛ Completed</option>
         </select>
-        <button class="clear-btn">🗑 Clear All</button>
+        <button class="clear-btn" id="clear-btn">🗑 Clear All</button>
       </div>
 
       <div class="add-container">
@@ -35,28 +41,13 @@
       </div>
 
       <section class="task-list-section">
-        <ul class="task-list" id="task-list"></ul>
-        <div class="empty-tasks">
-          <span class="empty-icon">📝</span>
-          <p class="empty-text">
-            No tasks found. Add some tasks to get started!
-          </p>
+        <div class="empty-tasks" id="empty-message">
+            <span class="empty-icon" id="icon">📝</span>
+            <p class="empty-text" id="text">No tasks found. Add some tasks to get started!</p>
         </div>
-      </section>
-
-      <section class="task-filter-section">
-        <div class="btn">
-          <button class="filter-btn" onclick="selectOption('all')">All</button>
-          <button class="filter-btn" onclick="selectOption('active')">
-            Active
-          </button>
-          <button class="filter-btn" onclick="selectOption('completed')">
-            Completed
-          </button>
-        </div>
-      </section>
+        <ul id="task-list"></ul>
+        </section>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>

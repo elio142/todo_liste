@@ -1,14 +1,12 @@
 body {
   font-family: sans-serif;
-  background: linear-gradient(135deg, #677ce7, #724da4);
+  background: linear-gradient(to right, #677ce7, #724da4);
   align-items: center;
   height: 100vh;
   margin: 0;
   display: flex;
   justify-content: center;
   padding: 0;
-  flex-direction: column;
-  flex-wrap: wrap;
 }
 .title {
   color: #2980b9;
@@ -20,6 +18,7 @@ body {
   justify-content: center;
   gap: 12px;
 }
+
 .title::before {
   content: "";
   width: 16px;
@@ -36,16 +35,20 @@ body {
   margin-bottom: 1.5rem;
   margin-top: 0.2rem;
 }
+.task-controls {
+  margin: 1rem;
+}
 .container {
   background: white;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   padding: 1rem;
 }
+
 .input-container {
   border-radius: 5px;
-  margin: 3rem 0.5rem 2rem 0.5rem;
 }
+
 .icon {
   position: absolute;
   transform: translateY(35%);
@@ -57,14 +60,6 @@ body {
   border-radius: 7px;
   outline: none;
   border: solid 1.5px gainsboro;
-  
-}
-
-.search-input:focus,
-.new-task:focus {
-  border-color: #2980b9;
-  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
-  transform: scale(1.02); /* Slight zoom effect */
 }
 
 /* When input loses focus */
@@ -72,7 +67,12 @@ body {
 .new-task:not(:focus) {
   transition: all 0.3s ease-out;
   box-shadow: none;
-  transform: scale(1);
+}
+
+#task-select:focus, .search-input:focus,
+#new-task:focus {
+  border-color: #2980b9;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
 }
 
 .filter-tasks {
@@ -80,22 +80,7 @@ body {
   border-radius: 7px;
   margin-right: 0.5rem;
   border: 1.5px solid gainsboro;
-  transition: all 0.3s ease-in-out; /* Smooth transition effect */
-  cursor: pointer;
-}
-/* When select is focused */
-.filter-tasks:focus {
-  border-color: #2980b9;
-  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
-  transform: scale(1.02); /* Slight zoom effect */
-}
-/* When select loses focus */
-.filter-tasks:not(:focus) {
-  transition: all 0.3s ease-out;
-  box-shadow: none;
-  transform: scale(1);
-}
-
+}  
 .clear-btn {
   padding: 8px 1rem;
   background: red;
@@ -109,11 +94,15 @@ body {
   cursor: pointer; /* Shows a pointer cursor when hovering */
   transition: background-color 0.3s, transform 0.2s ease; /* Smooth transition */
 }
+.clear-btn:not(:hover) {
+  transition: background-color 0.5s, transform 0.2s ease;
+}
+
 .add-container {
   display: flex;
-  margin-left: 0.5rem;
-  margin-top: 1.5rem;
+  margin: 1rem;
 }
+
 .new-task {
   flex: 1;
   padding: 10px;
@@ -122,61 +111,76 @@ body {
   border-radius: 7px;
   outline: none;
 }
+
+
 .add-task {
   padding: 10px;
-  background: lightgreen;
+  background: #90ee90;
   color: white;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
   margin-left: 5px;
-}
-.add-task:hover {
-  transform: scale(1.05); /* Slightly increase the button size for effect */
-  cursor: pointer; /* Shows a pointer cursor when hovering */
-  transition: background-color 0.3s, transform 0.2s ease; /* Smooth transition */
 }
 .empty-tasks {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background: rgba(200, 200, 200, 0.2);
   border-radius: 10px;
-  padding: 10%;
-  margin: 1.5rem 0.5rem;
+  margin: 1rem;
+  max-height:15rem;
+  padding: 4rem;
 }
 
 .empty-icon {
   font-size: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
 .empty-text {
   font-size: 12px;
   color: #666;
-}
-/* Styling for filter buttons */
-.btn {
   display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-  margin-top: 1rem;
+  justify-content: center;
 }
 
-.filter-btn {
-  background: none;
-  border: none;
-  color: #333;
-  padding: 6px 12px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+#task-list {
+  background-color: ghostwhite;
+  margin: 1rem;
+  border-radius: 6px;
+  padding: 1em;
+  max-height: 200px; /* Set a max-height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+  display: flex;
+  flex-direction: column;
+  
 }
 
-.filter-btn:focus {
-  background: #2980b9;
-  color: white;
-  border-radius: 5px;
-  border: blue 2px solid;
-  transition: background-color 1s ease-out border-color 0.1s ease-out;
+.task-label{
+  padding-left: 0.5rem;
+}
+ 
+
+.editInput{
+  padding: 0.5rem 5px !important;
+  border-radius: 6px !important;
+  border: #2980b9 1.5px solid;
+  box-shadow: 0 0 1px #2980b9;
+  margin-left: 1em;
+  margin-right: 0;
+  width:100%
+}
+.editInput:focus,
+.editInput:active{
+  border: solid 1px #2980b9;
+}
+.editBtn,
+.delete-button{
+  padding: 0.5em 1em;
+}
+.save-button{
+  padding: 1em;
+  margin-left: 1em;
+}
+.cancel-button{
+  padding: 1em;
 }
