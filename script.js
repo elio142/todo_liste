@@ -151,6 +151,41 @@ function createIconButton(icon, id, className, color, onClick, hidden = false) {
     if (hidden) button.style.display = "none";
     return button;
 }
+
+function updateTaskCount() {
+    let tasks = getTasksFromLocalStorage();
+    let activeTasks = tasks.filter(task => !task.completed).length;
+    
+    let taskCountDiv = document.getElementById("tasks-left");
+
+    if (activeTasks > 0) {
+        if (!taskCountDiv) {
+            taskCountDiv = document.createElement("div");
+            taskCountDiv.id = "tasks-left";
+            taskCountDiv.style.marginTop = "10px";
+            taskCountDiv.style.fontWeight = "bold";
+            document.getElementById("task-list").after(taskCountDiv);
+        }
+        taskCountDiv.textContent = `${activeTasks} task${activeTasks !== 1 ? "s" : ""} left`;
+    } else if (taskCountDiv) {
+        taskCountDiv.remove(); // Remove the div when no tasks exist
+    }
+}
+//function of the color of the add task button 
+let taskInput = document.getElementById("new-task");
+let addTaskBtn = document.getElementById("add-task");
+
+// Change to dark green when typing
+taskInput.addEventListener("input", () => {
+    addTaskBtn.style.backgroundColor = "#228B22"; // Dark green
+});
+
+// Change back to light green when clicking the button
+addTaskBtn.addEventListener("click", () => {
+    setTimeout(() => {
+        addTaskBtn.style.backgroundColor = "#90ee90"; // Light green
+    }, 100); // Slight delay to ensure it registers after clicking
+});
 // function to clear all the tasks 
 document.getElementById("clear-btn").addEventListener("click", clearAllTasks);
 
