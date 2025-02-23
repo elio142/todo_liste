@@ -1,14 +1,21 @@
+/* Reset default margin and padding for all elements */
+*{
+    padding: 0;
+    margin: 0;
+    transition: 0.4s;  /* Smooth transition for changes */
+}
 
+/* General styling for the page */
 body {
     font-family: sans-serif;
-    background: linear-gradient(to right, #677ce7, #724da4);
+    background: linear-gradient(to right, #677ce7, #724da4); /* Gradient background */
     align-items: center;
     height: 100vh;
-    margin: 0;
     display: flex;
     justify-content: center;
-    padding: 0;
 }
+
+/* Application title */
 .title {
     color: #2980b9;
     font-size: 30px;
@@ -20,6 +27,7 @@ body {
     gap: 12px;
 }
 
+/* Title icon styling */
 .title::before {
     content: "";
     width: 16px;
@@ -28,7 +36,9 @@ body {
     border-bottom: 4px solid #2980b9;
     transform: rotate(-45deg);
 }
-.subtitle{
+
+/* Subtitle styling */
+.subtitle {
     display: flex;
     justify-content: center;
     font-size: 12px;
@@ -36,67 +46,97 @@ body {
     margin-bottom: 1.5rem;
     margin-top: 0.2rem;
 }
+
+/* Main container for the task manager */
 .container {
     background: white;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-}
-.task-controls{
-    
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+    padding: 1em;
 }
 
+/* Search bar container */
 .input-container {
     border-radius: 5px;
-    margin: 3rem 0.5rem 2rem 0.5rem;
 }
-.icon{
-    position:absolute;
+
+/* Search icon positioning */
+.icon {
+    position: absolute;
     transform: translateY(35%);
     margin-left: 0.5rem;
 }
+
+/* Search input field */
 .search-input {
-    padding-left: 2rem ;
+    padding-left: 2rem;
     height: 30px;
     border-radius: 7px;
-    outline:none;
+    outline: none;
     border: solid 1.5px gainsboro;
 }
 
-/* When input loses focus */
-.search-input:not(:focus),
-.new-task:not(:focus) {
-  transition: all 0.3s ease-out;
-  box-shadow: none;
-}  
-
-
-.search-input:focus,
-.new-task:focus{
-  border-color: #2980b9;
-  box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
+/* Dropdown focus effect */
+#status-select:focus {
+    outline: none;
+    border: #2980b9 1.5px solid;
+    transition: 0.3s;
+    box-shadow: 0 0 3px rgba(41, 128, 185, 0.5);
 }
 
+/* Input fields lose focus effect */
+.search-input:not(:focus),
+.new-task:not(:focus) {
+    transition: all 0.3s ease-out;
+    box-shadow: none;
+}
+
+/* Search input and new task input focus effect */
+#task-select:focus, .search-input:focus,
+#new-task:focus {
+    border-color: #2980b9;
+    box-shadow: 0 0 8px rgba(41, 128, 185, 0.5);
+}
+
+/* Task filter dropdown */
 .filter-tasks {
     padding: 8px;
     border-radius: 7px;
     margin-right: 0.5rem;
     border: 1.5px solid gainsboro;
-}
+}  
+
+/* Clear all tasks button */
 .clear-btn {
-    padding: 8px 1rem;
+    padding: 8px 1em;
     background: red;
     color: white;
     border: none;
-    border-radius: 7px;
+    border-radius: 6px;
+    padding: 0.7em;
 }
 
+/* Clear button hover effect */
+.clear-btn:hover {
+    background-color: #ff4747; /* Lighter red on hover */
+    transform: scale(1.03); /* Slightly enlarge the button */
+    cursor: pointer; /* Show pointer cursor */
+    transition: background-color 0.3s, transform 0.2s ease-in; /* Smooth transition */
+    color: #ffffff;
+}
+
+/* Reset transition when not hovered */
+.clear-btn:not(:hover) {
+    transition: background-color 0.3s, transform 0.2s ease-out;
+}
+
+/* Container for adding a new task */
 .add-container {
     display: flex;
-    margin-left: 0.5rem;
-    margin-top: 1.5rem;
+    margin-top: 1em;
 }
 
+/* Input field for new task */
 .new-task {
     flex: 1;
     padding: 10px;
@@ -106,30 +146,177 @@ body {
     outline: none;
 }
 
-.add-task {
-    padding: 10px;
+/* Add Task button */
+#add-task {
+    padding: 0.5em 1em;
     background: #90ee90;
     color: white;
     border: none;
     border-radius: 5px;
     margin-left: 5px;
 }
+
+/* Empty task message styling */
 .empty-tasks {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: rgba(200, 200, 200, 0.2); 
+    background: rgba(200, 200, 200, 0.2);
     border-radius: 10px;
-    padding: 10%;
-    margin: 1.5rem 0.5rem;
+    margin-top: 1em;
+    padding: 5em;
 }
 
+/* Empty task icon styling */
 .empty-icon {
     font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5em;
 }
 
+/* Empty task message text */
 .empty-text {
     font-size: 12px;
     color: #666;
+    display: flex;
+    justify-content: center;
+}
+
+/* Task list container */
+#task-list {
+    background-color: ghostwhite;
+    margin-top: 1em;
+    border-radius: 6px;
+    padding: 1em;
+    max-height: 150px; /* Set a max height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: flex;
+    flex-direction: column;
+    min-height: 150px;
+}
+
+/* Task label spacing */
+.task-label {
+    padding-left: 0.5em;
+}
+
+/* Edit input styling */
+.editInput {
+    padding: 0.5em 15px !important;
+    font-size: medium;
+    border-radius: 6px !important;
+    border: #2980b9 1.5px solid;
+    box-shadow: 0 0 1px #2980b9;
+    margin-right: 0;
+    width: 100%;
+}
+
+/* Edit input focus effect */
+.editInput:focus,
+.editInput:active {
+    border: solid 1.5px #2980b9;
+    outline: none;
+}
+
+/* Buttons for editing and deleting tasks */
+.editBtn,
+.delete-button {
+    padding: 0.3em 0.8em;
+}
+
+/* Save button */
+.save-button {
+    padding: 0.5em;
+    margin-left: 1em;
+}
+
+/* Cancel button */
+.cancel-button {
+    padding: 0.5em;
+}
+
+/* Hover effect for task buttons */
+.cancel-button:hover,
+.save-button:hover,
+.editBtn:hover,
+.delete-button:hover {
+    transform: scale(1.03);
+    transition: transform 0.4s;
+}
+
+/* Reset transition when not hovered */
+.cancel-button:not(:hover),
+.save-button:not(:hover),
+.editBtn:not(:hover),
+.delete-button:not(:hover) {
+    transition: transform 0.3s;
+}
+
+/* Filter buttons container */
+.filter-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 0;
+}
+
+/* Individual filter button */
+.filter-btn {
+    background-color: #ffffff;
+    border: none;
+    color: #777;
+    padding: 5px 15px;
+    border-radius: 5px;
+    transition: background 0.5s, color 0.4s;
+}
+
+/* Active filter button */
+.filter-btn.active,
+.filter-btn:focus {
+    background: #007bff;
+    border: solid 1px #007bff;
+    color: white;
+}
+
+/* Smooth transition when filter button is not focused */
+.filter-btn:not(:focus),
+.filter-btn.active:not(:focus) {
+    transition: background 0.5s border 0.8s ease-out;
+}
+
+/* Horizontal separator */
+#task-hr {
+    background-color: #999;
+    margin: 1em 0;
+}
+
+/* Footer section */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Task count display */
+#task-count {
+    color: #777;
+    font-size: 0.9em;
+}
+
+/* Add animation for newly added tasks */
+.task-container {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.task-container.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Animation for when tasks are deleted */
+.task-container.remove {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
