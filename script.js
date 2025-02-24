@@ -268,7 +268,17 @@ taskInput.addEventListener("input", function () {
 
 
 
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+    let themeToggle = document.getElementById("theme-toggle");
+    if (document.body.classList.contains("dark-mode")) {
+        themeToggle.textContent = "☀️";
+        themeToggle.style.backgroundColor = "gainsboro"
+    } else {
+        themeToggle.textContent = "🌙";
+         themeToggle.style.backgroundColor = "#444";
+    }
+}
 
-
-
+document.getElementById("theme-toggle").addEventListener("click", toggleDarkMode);
 

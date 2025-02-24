@@ -360,4 +360,121 @@ body {
  }
 
     
+}   
+
+
+/* Theme toggle button styling */
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: #555;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(75, 255, 167, 0.5);
+}
+
+/* Dark mode styling */
+
+body.dark-mode .title::before {
+    border-left: 4px solid #4bffa7;
+    border-bottom: 4px solid #4bffa7;
+}
+body.dark-mode {
+    background: linear-gradient(to right, #2c3e50, #4bffa7);
+    color: #fff;
+
+}
+
+body.dark-mode .title {
+    color: #4bffa7;
+}
+
+body.dark-mode .subtitle {
+    color: #4bffa7;
+}
+
+body.dark-mode .container {
+    background: #333;
+    color: #fff;
+}
+
+body.dark-mode .search-input,
+body.dark-mode .new-task,
+body.dark-mode .filter-tasks,
+body.dark-mode .clear-btn,
+body.dark-mode #add-task,
+body.dark-mode .editInput,
+body.dark-mode .save-button,
+body.dark-mode .cancel-button,
+body.dark-mode .filter-btn {
+    background: #444;
+    color: #fff;
+    border: 1.5px solid #4bffa7;
+}
+
+body.dark-mode .search-input:focus,
+body.dark-mode .new-task:focus,
+body.dark-mode .new-task:active,
+body.dark-mode #new-task:focus,
+body.dark-mode #new-task:active,
+body.dark-mode .filter-tasks:focus,
+body.dark-mode .clear-btn:focus,
+body.dark-mode #add-task:focus,
+body.dark-mode .editInput:focus,
+body.dark-mode .save-button:focus,
+body.dark-mode .cancel-button:focus,
+body.dark-mode .filter-btn:focus {
+    border: 1px solid  #4bffa7;
+    box-shadow: 0 0 8px rgba(75, 255, 167, 0.5);
+}
+
+
+body.dark-mode .clear-btn:hover,
+body.dark-mode #add-task:hover,
+body.dark-mode .editBtn:hover,
+body.dark-mode .delete-button:hover,
+body.dark-mode .save-button:hover,
+body.dark-mode .cancel-button:hover,
+body.dark-mode .filter-btn:hover {
+    background-color: #4bffa7;
+    color: #fff;
+    transform: scale(1.03);
+    transition: background-color 0.3s, transform 0.2s ease-in;
+}
+
+body.dark-mode .empty-tasks {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .empty-text {
+    color: #4bffa7;
+}
+
+body.dark-mode #task-list {
+    background-color: #444;
+}
+
+body.dark-mode #task-hr {
+    background-color: #4bffa7;
+}
+
+body.dark-mode #task-count {
+    color: #4bffa7;
 }
