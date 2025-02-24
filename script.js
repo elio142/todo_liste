@@ -1,5 +1,17 @@
 document.addEventListener("DOMContentLoaded", displayTasks);
 document.getElementById("add-task").addEventListener("click", addTask);
+function addTask() {
+    let taskInput = document.getElementById("new-task").value.trim();
+    if (taskInput) {
+        let tasks = getTasksFromLocalStorage();
+        tasks.push({ text: taskInput, completed: false });
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        document.getElementById("new-task").value = "";
+        appendTask(taskInput, tasks.length - 1, false);
+        toggleEmptyMessage();
+        updateTaskCount(); 
+    }
+}
 
 // Retrieve tasks from local storage
 function getTasksFromLocalStorage() {
@@ -15,7 +27,12 @@ function displayTasks() {
         appendTask(task.text, index, task.completed);
     });
     toggleEmptyMessage();
+    updateTaskCount() ;
 }
+
+
+
+
 
 // Append a task to the task list
 function appendTask(text, index, completed) {
@@ -76,14 +93,14 @@ function appendTask(text, index, completed) {
         taskLi.classList.add("animate");
     }, 100);
 }
-
-// Toggle the completion status of a task
 function toggleTaskCompletion(index) {
     let tasks = getTasksFromLocalStorage();
     tasks[index].completed = !tasks[index].completed;
     localStorage.setItem("tasks", JSON.stringify(tasks));
     displayTasks();
 }
+// Toggle the completion status of a task
+
 
 // Enter edit mode for a task
 function enterEditMode(index) {
@@ -135,7 +152,7 @@ function createIconButton(icon, id, className, color, onClick, hidden = false) {
         borderRadius: "5px",
         fontSize: "12px",
         display: "flex",
-        alignItems: "center",
+        alignItems: "center",  
         justifyContent: "center",
         border: "none",
         color: "#fff",
@@ -163,22 +180,7 @@ function searchTasks() {
 }
 
 // Filter tasks based on status
-document.getElementById("status-select").addEventListener("change", filterTasks);
 
-function filterTasks() {
-    let filterValue = document.getElementById("status-select").value;
-    let tasks = getTasksFromLocalStorage();
-    let taskList = document.getElementById("task-list");
-    taskList.innerHTML = "";
-    tasks.forEach((task, index) => {
-        if (filterValue === "all" || 
-            (filterValue === "active" && !task.completed) || 
-            (filterValue === "completed" && task.completed)) {
-            appendTask(task.text, index, task.completed);
-        }
-    });
-    toggleEmptyMessage();
-}
 
 // Update the task count
 function updateTaskCount() {
@@ -194,18 +196,6 @@ function updateTaskCount() {
 }
 
 // Add a new task to the list
-function addTask() {
-    let taskInput = document.getElementById("new-task").value.trim();
-    if (taskInput) {
-        let tasks = getTasksFromLocalStorage();
-        tasks.push({ text: taskInput, completed: false });
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-        document.getElementById("new-task").value = "";
-        appendTask(taskInput, tasks.length - 1, false);
-        toggleEmptyMessage();
-        updateTaskCount(); 
-    }
-}
 
 // Clear all tasks from local storage and the list
 function clearAllTasks() {
@@ -228,12 +218,33 @@ function toggleEmptyMessage() {
     filterButtons.style.display = tasks.length === 0 ? "none" : "flex";
 }
 
-// Update the active filter button
-function updateActiveFilter(filterValue) {
-    filterButtons.forEach(btn => {
-        btn.classList.toggle("active", btn.getAttribute("data-filter") === filterValue);
+
+document.getElementById("status-select").addEventListener("change", filterTasks);
+document.querySelectorAll(".filter-btn").forEach(button => {
+    button.addEventListener("click", function () {
+        document.getElementById("status-select").value = this.getAttribute("data-filter");
+        filterTasks();
     });
+});
+
+function filterTasks() {
+    let filterValue = document.getElementById("status-select").value;
+    let tasks = getTasksFromLocalStorage();
+    let taskList = document.getElementById("task-list");
+    taskList.innerHTML = "";
+    tasks.forEach((task, index) => {
+        if (filterValue === "all" || 
+            (filterValue === "active" && !task.completed) || 
+            (filterValue === "completed" && task.completed)) {
+            appendTask(task.text, index, task.completed);
+        }
+    });
+    toggleEmptyMessage();
+    document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+    document.querySelector(`.filter-btn[data-filter="${filterValue}"]`).classList.add("active");
 }
+
+
 
 // Add event listener for Enter key to add task
 const taskInput = document.getElementById("new-task");
@@ -253,5 +264,11 @@ taskInput.addEventListener("input", function () {
         addTaskBtn.style.backgroundColor = ""; // Default color
     }
 });
+
+
+
+
+
+
 
 
